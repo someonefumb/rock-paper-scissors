@@ -3,12 +3,16 @@ let computerScore = 0;
 let computerChoice = Math.floor(Math.random() * 3);
 
 function getComputerChoice () {
-    if (computerChoice === 0) {
-        computerChoice = 'rock';
-    } else if (computerChoice === 1) {
-        computerChoice = 'scissor';
-    } else if (computerChoice === 2) {
-        computerChoice = 'paper';
+    switch(computerChoice) {
+        case 0:
+            computerChoice = 'rock';
+            break;
+        case 1:
+            computerChoice = 'scissor';
+            break;
+        case 2:
+            computerChoice = 'paper';
+            break;
     }
 }
 
