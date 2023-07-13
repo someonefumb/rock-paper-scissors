@@ -6,6 +6,20 @@ let computerScore = 0;
 let computer = ['rock', 'paper', 'scissor']
 let computerChoice = computer[Math.floor(Math.random() * 3)];
 
+// Buttons
+const buttons = document.querySelectorAll('.container button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        if (button.classList.contains('rock')) {
+            playerChoice = 'rock';
+        } else if (button.classList.contains('paper')) {
+            playerChoice = 'paper';
+        } else if (button.classList.contains('scissor')) {
+            playerChoice = 'scissor';
+        }
+    });
+});
+
 // Play a round of rock paper scissor
 function playRound () {
 
