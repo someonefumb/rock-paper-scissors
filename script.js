@@ -1,6 +1,7 @@
 // Scores
 let playerScore = 0;
 let computerScore = 0;
+const scores = document.querySelector('.rpsScores');
 
 // Result 
 const result = document.querySelector('.rpsResult');
@@ -26,6 +27,7 @@ function playRound() {
             computerScore++;
             result.textContent = `You lost, ${computerChoice} beats ${playerChoice}!`;
     }
+    scores.textContent = `You: ${playerScore}  Computer: ${computerScore}`;
 }
 
 // Buttons
