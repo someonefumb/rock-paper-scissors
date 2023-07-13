@@ -13,26 +13,33 @@ function getComputerChoice () {
     computerChoice = computer[Math.floor(Math.random() * 3)];
 };
 
-// Plays a round of rock paper scissor
-function playRound() {
-    getComputerChoice ();
+// Defines when game is over
+function isGameOver() {
     if (playerScore === 5) {
         result.textContent = `YOU WON ROCK PAPER SCISSORS ${playerScore} TO ${computerScore}`;
     } else if (computerScore === 5) {
         result.textContent = `YOU LOST ROCK PAPER SCISSORS ${computerScore} TO ${playerScore}`;
+    }
+}
+
+// Plays a round of rock paper scissor
+function playRound() {
+    getComputerChoice ();
+    if (computerScore === 5 || playerScore === 5) {
+        return;
     } else {
-        if(playerChoice === computerChoice) {
-            result.textContent = 'You tied!';
-        } else if (playerChoice === 'rock' && computerChoice === 'scissor'
-            || playerChoice === 'paper' && computerChoice === 'rock' 
-            || playerChoice === 'scissor' && computerChoice === 'paper') {
-                playerScore++;
-                result.textContent = `You won, ${playerChoice} beats ${computerChoice}!`;
-        } else {
-                computerScore++;
-                result.textContent = `You lost, ${computerChoice} beats ${playerChoice}!`;
-        }
-        scores.textContent = `You: ${playerScore}  Computer: ${computerScore}`;
+    if(playerChoice === computerChoice) {
+        result.textContent = 'You tied!';
+    } else if (playerChoice === 'rock' && computerChoice === 'scissor'
+        || playerChoice === 'paper' && computerChoice === 'rock' 
+        || playerChoice === 'scissor' && computerChoice === 'paper') {
+            playerScore++;
+            result.textContent = `You won, ${playerChoice} beats ${computerChoice}!`;
+    } else {
+            computerScore++;
+            result.textContent = `You lost, ${computerChoice} beats ${playerChoice}!`;
+    }
+    scores.textContent = `You: ${playerScore}  Computer: ${computerScore}`;
     }
 }
 
@@ -42,5 +49,6 @@ buttons.forEach((button) => {
     button.addEventListener('click', () => {
         playerChoice = button.className;
         playRound();
+        isGameOver();
     });
 });
