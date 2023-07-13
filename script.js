@@ -6,66 +6,39 @@ let computerScore = 0;
 let computer = ['rock', 'paper', 'scissor']
 let computerChoice = computer[Math.floor(Math.random() * 3)];
 
-// Buttons
+function playRound() {
+    if(playerChoice === computerChoice) {
+        playerScore++;
+        computerScore++;
+        return alert('tie');
+    } else if (playerChoice === 'rock' && computerChoice === 'scissor'
+        || playerChoice === 'paper' && computerChoice === 'rock' 
+        || playerChoice === 'scissor' && computerChoice === 'paper') {
+            playerScore++;
+            return alert(`you win, ${playerChoice} beats ${computerChoice}`);
+    } else if (playerChoice === 'rock' && computerChoice === 'paper'
+        || playerChoice === 'paper' && computerChoice === 'scissor' 
+        || playerChoice === 'scissor' && computerChoice === 'rock') {
+            computerScore++;
+            return alert(`you lose, ${computerChoice} beats ${playerChoice}`);
+    }
+}
+
 const buttons = document.querySelectorAll('.container button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         if (button.classList.contains('rock')) {
             playerChoice = 'rock';
+            playRound();
         } else if (button.classList.contains('paper')) {
             playerChoice = 'paper';
+            playRound();
         } else if (button.classList.contains('scissor')) {
             playerChoice = 'scissor';
+            playRound();
         }
+        console.log(playerChoice);
     });
 });
 
-// Play a round of rock paper scissor
-function playRound () {
 
-
-    let playerChoice = prompt('Rock Paper Scissor', '');
-    playerChoice = playerChoice.toLowerCase();
-
-    switch(true) {
-        case playerChoice === computerChoice:
-            playerScore++;
-            computerScore++;
-            return alert('tie');
-        case playerChoice === 'rock' && computerChoice === 'paper':
-            computerScore++;
-            return alert('you lost, paper beats rock');
-        case playerChoice === 'rock' && computerChoice === 'scissor':
-            playerScore++;
-            return alert('you win, rock beats scissor');
-        case playerChoice === 'paper' && computerChoice === 'rock':
-            playerScore++;
-            return alert('you win, paper beats rock');
-        case playerChoice === 'paper' && computerChoice === 'scissor':
-            computerScore++;
-            return alert('you lost, scissor beats paper');
-        case playerChoice === 'scissor' && computerChoice === 'rock':
-            computerScore++;
-            return alert('you lost, rock beats scissor');
-        case playerChoice === 'scissor' && computerChoice === 'paper':
-            playerScore++;
-            return alert('you win, scissor beats paper');
-    }
-
-}
-
-function game() {
-    for(i = 0; i < 5; i++) {
-        playRound();
-        console.log('Player Score:' + playerScore);
-        console.log('Computer Score:' + computerScore)
-    }
-
-    if (playerScore > computerScore) {
-        return alert('You won')
-    } else if (playerScore < computerScore) {
-        return alert('You lost')
-    } else {
-        return alert('Tied');
-    }
-}
