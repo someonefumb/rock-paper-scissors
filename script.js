@@ -1,23 +1,14 @@
+// Scores
 let playerScore = 0;
 let computerScore = 0;
-let computerChoice = Math.floor(Math.random() * 3);
 
-function getComputerChoice () {
-    switch(computerChoice) {
-        case 0:
-            computerChoice = 'rock';
-            break;
-        case 1:
-            computerChoice = 'scissor';
-            break;
-        case 2:
-            computerChoice = 'paper';
-            break;
-    }
-}
+// Computer Choice
+let computer = ['rock', 'paper', 'scissor']
+let computerChoice = computer[Math.floor(Math.random() * 3)];
 
+// Play a round of rock paper scissor
 function playRound () {
-    getComputerChoice();
+
 
     let playerChoice = prompt('Rock Paper Scissor', '');
     playerChoice = playerChoice.toLowerCase();
@@ -64,5 +55,3 @@ function game() {
         return alert('Tied');
     }
 }
-
-game();
