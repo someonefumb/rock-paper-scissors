@@ -2,15 +2,19 @@
 let playerScore = 0;
 let computerScore = 0;
 
+// Result 
+const result = document.querySelector('.rpsResult');
+
 // Computer Choice
 let computer = ['rock', 'paper', 'scissor']
-let computerChoice = computer[Math.floor(Math.random() * 3)];
-
-// Result
-const result = document.querySelector('.rpsResult');
+let computerChoice = 0;
+function getComputerChoice () {
+    computerChoice = computer[Math.floor(Math.random() * 3)];
+};
 
 // Plays a round of rock paper scissor
 function playRound() {
+    getComputerChoice ();
     if(playerChoice === computerChoice) {
         result.textContent = 'You tied!';
     } else if (playerChoice === 'rock' && computerChoice === 'scissor'
@@ -28,19 +32,8 @@ function playRound() {
 const buttons = document.querySelectorAll('.container button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        if (button.classList.contains('rock')) {
-            playerChoice = 'rock';
-            playRound();
-        } else if (button.classList.contains('paper')) {
-            playerChoice = 'paper';
-            playRound();
-        } else if (button.classList.contains('scissor')) {
-            playerChoice = 'scissor';
-            playRound();
-        }
-        console.log(playerChoice);
+        playerChoice = button.className;
+        playRound();
     });
 });
-
-const game = document.querySelector('.gameStart');
 
