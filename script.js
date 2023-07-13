@@ -16,18 +16,24 @@ function getComputerChoice () {
 // Plays a round of rock paper scissor
 function playRound() {
     getComputerChoice ();
-    if(playerChoice === computerChoice) {
-        result.textContent = 'You tied!';
-    } else if (playerChoice === 'rock' && computerChoice === 'scissor'
-        || playerChoice === 'paper' && computerChoice === 'rock' 
-        || playerChoice === 'scissor' && computerChoice === 'paper') {
-            playerScore++;
-            result.textContent = `You won, ${playerChoice} beats ${computerChoice}!`;
+    if (playerScore === 5) {
+        result.textContent = `YOU WON ROCK PAPER SCISSORS ${playerScore} TO ${computerScore}`;
+    } else if (computerScore === 5) {
+        result.textContent = `YOU LOST ROCK PAPER SCISSORS ${computerScore} TO ${playerScore}`;
     } else {
-            computerScore++;
-            result.textContent = `You lost, ${computerChoice} beats ${playerChoice}!`;
+        if(playerChoice === computerChoice) {
+            result.textContent = 'You tied!';
+        } else if (playerChoice === 'rock' && computerChoice === 'scissor'
+            || playerChoice === 'paper' && computerChoice === 'rock' 
+            || playerChoice === 'scissor' && computerChoice === 'paper') {
+                playerScore++;
+                result.textContent = `You won, ${playerChoice} beats ${computerChoice}!`;
+        } else {
+                computerScore++;
+                result.textContent = `You lost, ${computerChoice} beats ${playerChoice}!`;
+        }
+        scores.textContent = `You: ${playerScore}  Computer: ${computerScore}`;
     }
-    scores.textContent = `You: ${playerScore}  Computer: ${computerScore}`;
 }
 
 // Buttons
@@ -38,4 +44,3 @@ buttons.forEach((button) => {
         playRound();
     });
 });
-
