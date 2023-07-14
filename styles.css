@@ -1,0 +1,34 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    text-align: center;
+}
+
+header {
+    font-size: 100px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 30px;
+}
+
+button {
+    width: 250px;
+    height: 175px;
+    flex-shrink: 0;
+    font-size: 50px;
+}
+
+.rpsScores,
+.rpsResult {
+    font-size: 35px;
+}
+
+.rpsResult {
+    margin: 20px;
+}
